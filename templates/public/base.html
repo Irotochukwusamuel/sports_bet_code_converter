@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+<head>
+    <link rel="shortcut icon" href="/"/>
+    <link rel="apple-touch-icon" href="/static/public/images/apple-touch-icon-57x57.html"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="/static/public/images/apple-touch-icon-72x72.html"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="/static/public/images/apple-touch-icon-114x114.html"/>
+    <link rel="stylesheet" type="text/css" href="/static/public/css/font-icons.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/public/css/theme-vendors.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/public/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/public/css/responsive.css"/>
+    <meta name="viewport" content="width=device-width"/>
+    <meta charSet="utf-8"/>
+    <title>Example, the best converter</title>
+    <meta name="next-head-count" content="3"/>
+    <link rel="preload" href="/static/public/_next/static/css/2f26bb9842d84a608fa3.css" as="style"/>
+    <link rel="stylesheet" href="/static/public/_next/static/css/2f26bb9842d84a608fa3.css" data-n-g=""/>
+    <noscript data-n-css=""></noscript>
+    <link rel="preload" href="/static/public/_next/static/chunks/main-f51844f7b03e1c238dd7.js" as="script"/>
+    <link rel="preload" href="/static/public/_next/static/chunks/webpack-50bee04d1dc61f8adf5b.js" as="script"/>
+
+
+
+    {% block head %} {% endblock %}
+</head>
+<body data-mobile-nav-style="classic" style="position: unset !important;">
+<div id="__next">
+    <header class="header-with-topbar">
+        <nav class="navbar navbar-expand-lg top-space navbar-light bg-white header-light fixed-top navbar-boxed header-reverse-scroll"
+             style="top: 49px;background-color: rgb(50 49 145) !important;">
+            <div class="container-fluid nav-header-container">
+                <div class="col-6 col-lg-2 mr-auto pl-lg-0"><a class="navbar-brand" href="/"></a></div>
+                <div class="col-auto menu-order px-lg-0">
+                    <button class="navbar-toggler float-right" type="button" data-toggle="collapse"
+                            data-target="#navbarNav" aria-controls="navbarNav" aria-label="Toggle navigation"><span
+                            class="navbar-toggler-line"></span><span class="navbar-toggler-line"></span><span
+                            class="navbar-toggler-line"></span><span class="navbar-toggler-line"></span></button>
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                        <ul class="navbar-nav alt-font">
+                            <li class="nav-item dropdown megamenu"><a class="nav-link" href="/">Home</a></li>
+                            <li class="nav-item dropdown megamenu"><a class="nav-link"
+                                                                      href="/predictions">Predictions</a>
+                            </li>
+
+                            <li class="nav-item dropdown megamenu"><a class="nav-link" href="/about">About us</a></li>
+                            <li class="nav-item dropdown megamenu"><a class="nav-link" href="/faqs">FAQ's</a></li>
+                            {% if isloggedIn != True %}
+                                <li class="nav-item dropdown simple-dropdown"><a href="#" class="nav-link">Account</a><i
+                                        class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"
+                                        aria-hidden="true"></i>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li class="dropdown">
+                                        <li><a href="/login" style="font-size: 15px">Login</a></li>
+                                        <li><a href="/register" style="font-size: 15px">Create account</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            {% else %}
+                                <li class="nav-item dropdown simple-dropdown"><a href="#"
+                                                                                 class="nav-link">Hi, {{ lastname['lastname'] }}</a><i
+                                        class="fa fa-angle-down dropdown-toggle" data-toggle="dropdown"
+                                        aria-hidden="true"></i>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li class="dropdown">
+                                        <li><a href="/logout" style="font-size: 15px">Logout</a></li>
+                                        {% if lastname["isAdmin"] == "Yes" %}
+                                            <li><a href="/AppAdmin" style="font-size: 15px">Admin Panel</a></li>
+
+                                        {% endif %}
+                                        </li>
+                                    </ul>
+                                </li>
+                            {% endif %}
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-auto text-right pr-0 font-size-0">
+                    <div class="header-language dropdown d-lg-inline-block"><a href="javascript:void(0);"><i
+                            class="feather icon-feather-globe"></i></a>
+                        <ul class="dropdown-menu alt-font">
+                            <div id="google_translate_element"></div>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    {% block body %} {% endblock %}
+    <footer class="footer-dark bg-slate-blue" style="background-color: rgb(50 49 145)">
+        <div class="footer-top padding-seven-tb lg-padding-eight-tb sm-padding-50px-tb">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-6 col-sm-6 order-5 order-lg-0 text-md-center text-lg-left last-paragraph-no-margin">
+                        <a class="margin-5px-top d-inline-block" href="/">
+
+
+                        </a>
+                        <p style="
+                                color: white;
+                                font-family: 'Poppins';
+                                font-size: 35px;
+                            ">Sample</p>
+                        <p>Please Note that Sample is the only official Sample website. Other
+                            websites even if they resemble the official one and/or contain full or part of the company&#x27;s
+                            name in the URL do not relate to Sample.</p>
+                        <p>© Copyright 2014<!-- --> <a class="text-decoration-line-bottom text-white"
+                                                       href="index.html"></a></p></div>
+                    <div class="col-12 col-lg offset-xl-1 col-md-3 col-sm-4 order-1 order-lg-0 md-margin-40px-bottom xs-margin-25px-bottom">
+                        <span class="alt-font font-weight-500 d-block text-white margin-20px-bottom xs-margin-10px-bottom">Main Navigation</span>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/about">About us</a></li>
+                            <li><a href="/predictions">Predictions</a></li>
+                            <li><a href="/faqs">FAQs</a></li>
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>
+<script id="__NEXT_DATA__" type="application/json">{
+    "props": {
+        "pageProps": {}
+    },
+    "page": "/",
+    "query": {},
+    "buildId": "fO9NtPgy_kXlKJ6AULxw-",
+    "nextExport": true,
+    "autoExport": true,
+    "isFallback": false
+}</script>
+<script nomodule="" src="/static/public/_next/static/chunks/polyfills-af28de04c604a2479390.js"></script>
+<script src="/static/public/_next/static/chunks/main-f51844f7b03e1c238dd7.js" async=""></script>
+<script src="/static/public/_next/static/chunks/webpack-50bee04d1dc61f8adf5b.js" async=""></script>
+<script type="text/javascript" src="/static/public/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/public/js/theme-vendors.min.js"></script>
+<script type="text/javascript" src="/static/public/js/main.js" async=""></script>
+<script src="/static/public/requests/forms_new.js"></script>
+
+<script>
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+</script>
+
+<script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

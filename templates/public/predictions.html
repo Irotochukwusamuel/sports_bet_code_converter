@@ -1,0 +1,220 @@
+{% extends "public/base.html" %}
+
+{% block head %}
+
+    <style>
+
+
+        .prediction_list {
+            /* padding: 50px 0 10px; */
+            padding: 10px 0 10px;
+        }
+
+        .prediction_list .header {
+            background-image: linear-gradient(-180deg, #3F444E 2%, #3A3F48 97%);
+            color: #fff;
+            padding: 12px 15px;
+            border-radius: 5px 5px 0 0;
+            float: left;
+            width: 100%;
+            margin-bottom: 0px;
+            line-height: 35px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .prediction_list .header .btn {
+            font-size: 11px;
+            padding: 10px 25px;
+            text-transform: uppercase;
+            float: right;
+        }
+
+        .prediction_list .header .dropdown .dropdown-menu {
+            left: auto !important;
+            right: 0px;
+        }
+
+        .pridiction-page.prediction_list .header .btn {
+            padding-right: 30px;
+            padding-left: 20px;
+        }
+
+        .prediction_list .header .dropdown .dropdown-menu .dropdown-item {
+            font-size: 12px;
+            padding: 3px 1.5rem
+        }
+
+        .prediction_list .table-cont {
+            background: #fff;
+            padding-bottom: 5px;
+            border-radius: 0 0 5px 5px;
+            margin-bottom: 20px;
+        }
+
+        .prediction_list .table-cont th {
+            background: #4F535E;
+            border: none;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .prediction_list .table-cont td {
+            padding: .70rem .75rem .40em;
+            font-size: 12px;
+            line-height: 20px;
+            font-family: "Poppins" !important;
+        }
+
+        .prediction_list .table-cont tr th:first-child,
+        .prediction_list .table-cont tr td:first-child {
+            padding-left: 1.5em;
+        }
+
+        .prediction_list .table-cont td .ongoing-match,
+        .prediction_list .table-cont td .like,
+        .prediction_list .table-cont td .dislike {
+            background: #E1484C;
+            color: #fff;
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 5px;
+            margin-top: -5px;
+            text-decoration: none;
+            min-width: 65px;
+            text-align: center;
+            transition: ease-in-out all 0.2s;
+            -webkit-transition: ease-in-out all 0.2s;
+        }
+
+        .prediction_list .table-cont td .dislike:hover {
+            background: #b93b3e;
+        }
+
+        .prediction_list .table-cont td .ongoing-match {
+            background: rgba(0, 0, 0, 0.30);
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .prediction_list .table-cont td .like {
+            background: #2CB943;
+        }
+
+        .prediction_list .table-cont td .like:hover {
+            background: #219634
+        }
+
+        .prediction_list .table-cont td .ongoing-match svg,
+        .prediction_list .table-cont td .like svg,
+        .prediction_list .table-cont td .dislike svg {
+            margin-right: 7px;
+            top: 1px;
+            position: relative;
+        }
+
+        .prediction_list .table-cont td .dislike svg {
+            top: 3px;
+        }
+
+        .prediction_list .home-winners-list.table-cont td .btn {
+            font-size: 11px;
+            padding: 9px 30px;
+            margin-top: -5px;
+            margin-bottom: 5px;
+        }
+
+        .prediction_list .home-winners-list.table-cont td strong {
+            margin-right: 8px;
+        }
+
+        .prediction_list .home-winners-list.table-cont td span.badge {
+            margin: 0 10px 0 5px;
+            display: inline-block;
+            position: relative;
+            font-size: 8px;
+            font-weight: 300;
+            text-align: center;
+            width: 23px;
+            height: 23px;
+            top: 7px;
+            line-height: 22px;
+            margin-right: 3px;
+        }
+
+        .prediction_list .home-winners-list.table-cont td span.badge.gold {
+            background: url(../images/badges/1.svg) center no-repeat;
+            background-size: cover;
+            color: #000;
+        }
+
+        .prediction_list .home-winners-list.table-cont td span.badge.bronze {
+            background: url(../images/badges/2.svg) center no-repeat;
+            background-size: cover;
+            color: #fff;
+        }
+
+        .prediction_list .home-winners-list.table-cont td span.badge.silver {
+            background: url(../images/badges/3.svg) center no-repeat;
+            background-size: cover;
+            color: #000;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        tr {
+            border-bottom: 1px solid #0000002b;
+        }
+
+    </style>
+{% endblock %}
+
+{% block body %}
+
+
+    <section class="prediction_list" style="background-color: #686767">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <h4 class="title header">
+                        <span class="">Soccer Tips </span>
+                    </h4>
+                </div>
+                <div class="col-lg-12">
+                    <div class="table-cont">
+                        <table class="table" id="latestTips">
+                            <tbody>
+                            <tr>
+                                <th style="font-size: 12px">LEAGUE</th>
+                                <th style="font-size: 12px">MATCH</th>
+                                <th style="font-size: 12px"><span
+                                        class="d-none d-sm-block d-md-block d-lg-block d-xl-block"
+                                        style="font-size: 11px">PREDICTION</span>
+                            </tr>
+                            {% if predict != "empty" %}
+                                {% for data in predict %}
+                                    <tr>
+                                        <td style="font-size: 14px;font-family: 'poppins'">{{ data["league"] }}</td>
+
+                                        <td style="font-size: 14px;font-family: 'poppins'"><strong>{{ data["home"] }}
+                                            VS {{ data["away"] }}</strong></td>
+                                        <td style="font-size: 14px;font-family: 'poppins'">{{ data["prediction"] }}</td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--<div style="text-align: right"> <h4> <a href="#" onclick="return showLatestWinningTips();" class="btn primary btn-sm">View More Latest Winning Tips</a></h4></div>-->
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+{% endblock %}
